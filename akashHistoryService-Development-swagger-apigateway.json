@@ -1,0 +1,763 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "2018-08-29T05:23:07Z",
+    "title": "princeHistoryService"
+  },
+  "host": "fotm0oz3x3.execute-api.us-east-1.amazonaws.com",
+  "basePath": "/Development",
+  "schemes": [
+    "https"
+  ],
+  "paths": {
+    "/{partner}": {
+      "get": {
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "partner",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200 response",
+            "schema": {
+              "$ref": "#/definitions/Empty"
+            }
+          }
+        }
+      }
+    },
+    "/{partner}/history": {
+      "get": {
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "endTs",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "siteId",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "deviceIds",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "partner",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "mediaTypes",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "id",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "startTs",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200 response",
+            "schema": {
+              "$ref": "#/definitions/icEvents"
+            },
+            "headers": {
+              "Access-Control-Allow-Origin": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "Empty": {
+      "type": "object",
+      "title": "Empty Schema"
+    },
+    "icEvents": {
+      "type": "object",
+      "required": [
+        "count",
+        "icEvent"
+      ],
+      "properties": {
+        "icEvent": {
+          "type": "array",
+          "title": "The Icevent Schema",
+          "items": {
+            "type": "object",
+            "title": "The Items Schema",
+            "properties": {
+              "cause": {
+                "type": "object",
+                "title": "The Cause Schema",
+                "properties": {
+                  "byUserType": {
+                    "type": "string",
+                    "title": "The Byusertype Schema",
+                    "pattern": "^(.*)$",
+                    "default": ""
+                  },
+                  "byUserId": {
+                    "type": "string",
+                    "title": "The Byuserid Schema",
+                    "pattern": "^(.*)$",
+                    "default": ""
+                  },
+                  "byUserName": {
+                    "type": "string",
+                    "title": "The Byusername Schema",
+                    "pattern": "^(.*)$",
+                    "default": ""
+                  },
+                  "targetUserType": {
+                    "type": "string",
+                    "title": "The Targetusertype Schema",
+                    "pattern": "^(.*)$",
+                    "default": ""
+                  },
+                  "targetUserId": {
+                    "type": "string",
+                    "title": "The Targetuserid Schema",
+                    "pattern": "^(.*)$",
+                    "default": ""
+                  },
+                  "targetUserName": {
+                    "type": "string",
+                    "title": "The Targetusername Schema",
+                    "pattern": "^(.*)$",
+                    "default": ""
+                  },
+                  "clientName": {
+                    "type": "string",
+                    "title": "The Clientname Schema",
+                    "pattern": "^(.*)$",
+                    "default": ""
+                  },
+                  "accessType": {
+                    "type": "string",
+                    "title": "The Accesstype Schema",
+                    "pattern": "^(.*)$",
+                    "default": ""
+                  },
+                  "ipAddress": {
+                    "type": "string",
+                    "title": "The Ipaddress Schema",
+                    "pattern": "^(.*)$",
+                    "default": ""
+                  }
+                },
+                "required": [
+                  "byUserType"
+                ]
+              },
+              "metaData": {
+                "type": "array",
+                "title": "The Metadata Schema",
+                "items": {
+                  "type": "object",
+                  "title": "The Items Schema",
+                  "properties": {
+                    "name": {
+                      "type": "string",
+                      "title": "The Name Schema",
+                      "pattern": "^(.*)$",
+                      "default": ""
+                    },
+                    "value": {
+                      "type": "string",
+                      "title": "The Value Schema",
+                      "pattern": "^(.*)$",
+                      "default": ""
+                    },
+                    "input": {
+                      "type": "boolean",
+                      "title": "The Input Schema",
+                      "default": false
+                    },
+                    "hidden": {
+                      "type": "boolean",
+                      "title": "The Hidden Schema",
+                      "default": false
+                    }
+                  }
+                }
+              },
+              "context": {
+                "type": "array",
+                "title": "The Context Schema",
+                "items": {
+                  "type": "object",
+                  "title": "The Items Schema",
+                  "properties": {
+                    "mediaType": {
+                      "type": "string",
+                      "title": "The Mediatype Schema",
+                      "pattern": "^(.*)$",
+                      "default": ""
+                    },
+                    "value": {
+                      "type": "string",
+                      "title": "The Value Schema",
+                      "pattern": "^(.*)$",
+                      "default": ""
+                    },
+                    "href": {
+                      "type": "string",
+                      "title": "The Href Schema",
+                      "pattern": "^(.*)$",
+                      "default": ""
+                    }
+                  },
+                  "required": [
+                    "value"
+                  ]
+                }
+              },
+              "id": {
+                "type": "string",
+                "title": "The Id Schema",
+                "pattern": "^(.*)$",
+                "default": ""
+              },
+              "mediaType": {
+                "type": "string",
+                "title": "The Mediatype Schema",
+                "pattern": "^(.*)$",
+                "default": ""
+              },
+              "ts": {
+                "type": "integer",
+                "title": "The Ts Schema"
+              },
+              "href": {
+                "type": "string",
+                "title": "The Href Schema",
+                "pattern": "^(.*)$",
+                "default": ""
+              },
+              "errorCode": {
+                "type": "string",
+                "title": "The Errorcode Schema",
+                "pattern": "^(.*)$",
+                "default": ""
+              },
+              "channel": {
+                "type": "string",
+                "title": "The Channel Schema",
+                "pattern": "^(.*)$",
+                "default": ""
+              },
+              "siteId": {
+                "type": "string",
+                "title": "The Siteid Schema",
+                "pattern": "^(.*)$",
+                "default": ""
+              },
+              "deviceId": {
+                "type": "string",
+                "title": "The Deviceid Schema",
+                "pattern": "^(.*)$",
+                "default": ""
+              },
+              "instanceId": {
+                "type": "string",
+                "title": "The Instanceid Schema",
+                "pattern": "^(.*)$",
+                "default": ""
+              },
+              "instanceName": {
+                "type": "string",
+                "title": "The Instancename Schema",
+                "pattern": "^(.*)$",
+                "default": ""
+              },
+              "lastValue": {
+                "type": "string",
+                "title": "The Lastvalue Schema",
+                "pattern": "^(.*)$",
+                "default": ""
+              },
+              "lastDuration": {
+                "type": "string",
+                "title": "The Lastduration Schema",
+                "pattern": "^(.*)$",
+                "default": ""
+              },
+              "value": {
+                "type": "string",
+                "title": "The Value Schema",
+                "pattern": "^(.*)$",
+                "default": ""
+              }
+            },
+            "required": [
+              "context",
+              "mediaType",
+              "metaData",
+              "ts"
+            ]
+          }
+        },
+        "count": {
+          "type": "integer",
+          "title": "The Count Schema"
+        }
+      },
+      "title": "icEvents"
+    }
+  },
+  "x-amazon-apigateway-documentation": {
+    "version": "test",
+    "createdDate": "2018-09-06T06:06:06Z",
+    "documentationParts": [
+      {
+        "location": {
+          "type": "MODEL",
+          "name": "Empty"
+        },
+        "properties": {
+          "title": "Empty Schema"
+        }
+      },
+      {
+        "location": {
+          "type": "MODEL",
+          "name": "icEvents.count"
+        },
+        "properties": {
+          "title": "The Count Schema"
+        }
+      },
+      {
+        "location": {
+          "type": "MODEL",
+          "name": "icEvents.icEvent.items.cause.accessType"
+        },
+        "properties": {
+          "title": "The Accesstype Schema"
+        }
+      },
+      {
+        "location": {
+          "type": "MODEL",
+          "name": "icEvents.icEvent.items.cause.byUserId"
+        },
+        "properties": {
+          "title": "The Byuserid Schema"
+        }
+      },
+      {
+        "location": {
+          "type": "MODEL",
+          "name": "icEvents.icEvent.items.cause.byUserName"
+        },
+        "properties": {
+          "title": "The Byusername Schema"
+        }
+      },
+      {
+        "location": {
+          "type": "MODEL",
+          "name": "icEvents.icEvent.items.cause.byUserType"
+        },
+        "properties": {
+          "title": "The Byusertype Schema"
+        }
+      },
+      {
+        "location": {
+          "type": "MODEL",
+          "name": "icEvents.icEvent.items.cause.clientName"
+        },
+        "properties": {
+          "title": "The Clientname Schema"
+        }
+      },
+      {
+        "location": {
+          "type": "MODEL",
+          "name": "icEvents.icEvent.items.cause.ipAddress"
+        },
+        "properties": {
+          "title": "The Ipaddress Schema"
+        }
+      },
+      {
+        "location": {
+          "type": "MODEL",
+          "name": "icEvents.icEvent.items.cause.targetUserId"
+        },
+        "properties": {
+          "title": "The Targetuserid Schema"
+        }
+      },
+      {
+        "location": {
+          "type": "MODEL",
+          "name": "icEvents.icEvent.items.cause.targetUserName"
+        },
+        "properties": {
+          "title": "The Targetusername Schema"
+        }
+      },
+      {
+        "location": {
+          "type": "MODEL",
+          "name": "icEvents.icEvent.items.cause.targetUserType"
+        },
+        "properties": {
+          "title": "The Targetusertype Schema"
+        }
+      },
+      {
+        "location": {
+          "type": "MODEL",
+          "name": "icEvents.icEvent.items.cause"
+        },
+        "properties": {
+          "title": "The Cause Schema"
+        }
+      },
+      {
+        "location": {
+          "type": "MODEL",
+          "name": "icEvents.icEvent.items.channel"
+        },
+        "properties": {
+          "title": "The Channel Schema"
+        }
+      },
+      {
+        "location": {
+          "type": "MODEL",
+          "name": "icEvents.icEvent.items.context.items.href"
+        },
+        "properties": {
+          "title": "The Href Schema"
+        }
+      },
+      {
+        "location": {
+          "type": "MODEL",
+          "name": "icEvents.icEvent.items.context.items.mediaType"
+        },
+        "properties": {
+          "title": "The Mediatype Schema"
+        }
+      },
+      {
+        "location": {
+          "type": "MODEL",
+          "name": "icEvents.icEvent.items.context.items.value"
+        },
+        "properties": {
+          "title": "The Value Schema"
+        }
+      },
+      {
+        "location": {
+          "type": "MODEL",
+          "name": "icEvents.icEvent.items.context.items"
+        },
+        "properties": {
+          "title": "The Items Schema"
+        }
+      },
+      {
+        "location": {
+          "type": "MODEL",
+          "name": "icEvents.icEvent.items.context"
+        },
+        "properties": {
+          "title": "The Context Schema"
+        }
+      },
+      {
+        "location": {
+          "type": "MODEL",
+          "name": "icEvents.icEvent.items.deviceId"
+        },
+        "properties": {
+          "title": "The Deviceid Schema"
+        }
+      },
+      {
+        "location": {
+          "type": "MODEL",
+          "name": "icEvents.icEvent.items.errorCode"
+        },
+        "properties": {
+          "title": "The Errorcode Schema"
+        }
+      },
+      {
+        "location": {
+          "type": "MODEL",
+          "name": "icEvents.icEvent.items.href"
+        },
+        "properties": {
+          "title": "The Href Schema"
+        }
+      },
+      {
+        "location": {
+          "type": "MODEL",
+          "name": "icEvents.icEvent.items.id"
+        },
+        "properties": {
+          "title": "The Id Schema"
+        }
+      },
+      {
+        "location": {
+          "type": "MODEL",
+          "name": "icEvents.icEvent.items.instanceId"
+        },
+        "properties": {
+          "title": "The Instanceid Schema"
+        }
+      },
+      {
+        "location": {
+          "type": "MODEL",
+          "name": "icEvents.icEvent.items.instanceName"
+        },
+        "properties": {
+          "title": "The Instancename Schema"
+        }
+      },
+      {
+        "location": {
+          "type": "MODEL",
+          "name": "icEvents.icEvent.items.lastDuration"
+        },
+        "properties": {
+          "title": "The Lastduration Schema"
+        }
+      },
+      {
+        "location": {
+          "type": "MODEL",
+          "name": "icEvents.icEvent.items.lastValue"
+        },
+        "properties": {
+          "title": "The Lastvalue Schema"
+        }
+      },
+      {
+        "location": {
+          "type": "MODEL",
+          "name": "icEvents.icEvent.items.mediaType"
+        },
+        "properties": {
+          "title": "The Mediatype Schema"
+        }
+      },
+      {
+        "location": {
+          "type": "MODEL",
+          "name": "icEvents.icEvent.items.metaData.items.hidden"
+        },
+        "properties": {
+          "title": "The Hidden Schema"
+        }
+      },
+      {
+        "location": {
+          "type": "MODEL",
+          "name": "icEvents.icEvent.items.metaData.items.input"
+        },
+        "properties": {
+          "title": "The Input Schema"
+        }
+      },
+      {
+        "location": {
+          "type": "MODEL",
+          "name": "icEvents.icEvent.items.metaData.items.name"
+        },
+        "properties": {
+          "title": "The Name Schema"
+        }
+      },
+      {
+        "location": {
+          "type": "MODEL",
+          "name": "icEvents.icEvent.items.metaData.items.value"
+        },
+        "properties": {
+          "title": "The Value Schema"
+        }
+      },
+      {
+        "location": {
+          "type": "MODEL",
+          "name": "icEvents.icEvent.items.metaData.items"
+        },
+        "properties": {
+          "title": "The Items Schema"
+        }
+      },
+      {
+        "location": {
+          "type": "MODEL",
+          "name": "icEvents.icEvent.items.metaData"
+        },
+        "properties": {
+          "title": "The Metadata Schema"
+        }
+      },
+      {
+        "location": {
+          "type": "MODEL",
+          "name": "icEvents.icEvent.items.siteId"
+        },
+        "properties": {
+          "title": "The Siteid Schema"
+        }
+      },
+      {
+        "location": {
+          "type": "MODEL",
+          "name": "icEvents.icEvent.items.ts"
+        },
+        "properties": {
+          "title": "The Ts Schema"
+        }
+      },
+      {
+        "location": {
+          "type": "MODEL",
+          "name": "icEvents.icEvent.items.value"
+        },
+        "properties": {
+          "title": "The Value Schema"
+        }
+      },
+      {
+        "location": {
+          "type": "MODEL",
+          "name": "icEvents.icEvent.items"
+        },
+        "properties": {
+          "title": "The Items Schema"
+        }
+      },
+      {
+        "location": {
+          "type": "MODEL",
+          "name": "icEvents.icEvent"
+        },
+        "properties": {
+          "title": "The Icevent Schema"
+        }
+      },
+      {
+        "location": {
+          "type": "MODEL",
+          "name": "icEvents"
+        },
+        "properties": {
+          "title": "icEvents"
+        }
+      },
+      {
+        "location": {
+          "type": "RESPONSE",
+          "path": "/{partner}/history",
+          "method": "GET",
+          "statusCode": "200"
+        },
+        "properties": {
+          "description": "200 response"
+        }
+      },
+      {
+        "location": {
+          "type": "RESPONSE",
+          "path": "/{partner}/sites/{siteId}/cameraMediaEvents",
+          "method": "GET",
+          "statusCode": "200"
+        },
+        "properties": {
+          "description": "200 response"
+        }
+      },
+      {
+        "location": {
+          "type": "RESPONSE",
+          "path": "/{partner}/sites/{siteId}/entryEvents",
+          "method": "GET",
+          "statusCode": "200"
+        },
+        "properties": {
+          "description": "200 response"
+        }
+      },
+      {
+        "location": {
+          "type": "RESPONSE",
+          "path": "/{partner}/sites/{siteId}/events",
+          "method": "GET",
+          "statusCode": "200"
+        },
+        "properties": {
+          "description": "200 response"
+        }
+      },
+      {
+        "location": {
+          "type": "RESPONSE",
+          "path": "/{partner}",
+          "method": "GET",
+          "statusCode": "200"
+        },
+        "properties": {
+          "description": "200 response"
+        }
+      }
+    ]
+  }
+}
